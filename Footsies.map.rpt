@@ -1,0 +1,1063 @@
+Analysis & Synthesis report for Footsies
+Wed Jun  4 04:59:24 2025
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |Footsies|vga_driver:draw|v_state
+ 10. State Machine - |Footsies|vga_driver:draw|h_state
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: clock_divider:my_clock_divider1
+ 17. Parameter Settings for User Entity Instance: clock_divider:my_clock_divider2
+ 18. Parameter Settings for User Entity Instance: game:my_game|character1:player1
+ 19. Parameter Settings for User Entity Instance: game:my_game|character2:player2
+ 20. Parameter Settings for User Entity Instance: vga_driver:draw
+ 21. Parameter Settings for Inferred Entity Instance: background_renderer:bg|lpm_divide:Div0
+ 22. Parameter Settings for Inferred Entity Instance: background_renderer:bg|lpm_divide:Div1
+ 23. Port Connectivity Checks: "game_state:game_state_inst"
+ 24. Port Connectivity Checks: "vga_driver:draw"
+ 25. Port Connectivity Checks: "game:my_game"
+ 26. Port Connectivity Checks: "keypad_controller:my_keypad"
+ 27. Port Connectivity Checks: "clock_divider:my_clock_divider2"
+ 28. Port Connectivity Checks: "clock_divider:my_clock_divider1"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+ 32. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Jun  4 04:59:24 2025          ;
+; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                   ; Footsies                                       ;
+; Top-level Entity Name           ; Footsies                                       ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 334                                            ;
+; Total pins                      ; 210                                            ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 3                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; Footsies           ; Footsies           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processors 6-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; modules/game_state.v             ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v                  ;         ;
+; modules/character2.v             ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v                  ;         ;
+; modules/character1.v             ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v                  ;         ;
+; modules/keypad_controller.v      ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/keypad_controller.v           ;         ;
+; modules/hexto7seg.v              ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/hexto7seg.v                   ;         ;
+; Footsies.v                       ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v                            ;         ;
+; modules/vga_driver.v             ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/vga_driver.v                  ;         ;
+; modules/game.v                   ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v                        ;         ;
+; modules/clock_divider.v          ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/clock_divider.v               ;         ;
+; modules/background_renderer.v    ; yes             ; User Verilog HDL File        ; C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v         ;         ;
+; character1.mem                   ; yes             ; Auto-Found Unspecified File  ; C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem                        ;         ;
+; background.mem                   ; yes             ; Auto-Found Unspecified File  ; C:/Users/lezgi/Desktop/EE314/EE314final/background.mem                        ;         ;
+; character2.mem                   ; yes             ; Auto-Found Unspecified File  ; C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem                        ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc      ;         ;
+; db/lpm_divide_vcm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/lpm_divide_vcm.tdf                 ;         ;
+; db/sign_div_unsign_5nh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/sign_div_unsign_5nh.tdf            ;         ;
+; db/alt_u_div_g2f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/alt_u_div_g2f.tdf                  ;         ;
+; db/lpm_divide_rbm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/lpm_divide_rbm.tdf                 ;         ;
+; db/sign_div_unsign_1mh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/sign_div_unsign_1mh.tdf            ;         ;
+; db/alt_u_div_80f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/lezgi/Desktop/EE314/EE314final/db/alt_u_div_80f.tdf                  ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 935            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 1660           ;
+;     -- 7 input functions                    ; 5              ;
+;     -- 6 input functions                    ; 201            ;
+;     -- 5 input functions                    ; 148            ;
+;     -- 4 input functions                    ; 251            ;
+;     -- <=3 input functions                  ; 1055           ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 334            ;
+;                                             ;                ;
+; I/O pins                                    ; 210            ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 3              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 140            ;
+; Total fan-out                               ; 6960           ;
+; Average fan-out                             ; 2.78           ;
++---------------------------------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                        ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |Footsies                                 ; 1660 (54)           ; 334 (16)                  ; 0                 ; 3          ; 210  ; 0            ; |Footsies                                                                                                                        ; Footsies            ; work         ;
+;    |background_renderer:bg|               ; 720 (40)            ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |Footsies|background_renderer:bg                                                                                                 ; background_renderer ; work         ;
+;       |lpm_divide:Div0|                   ; 464 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_vcm:auto_generated|  ; 464 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div0|lpm_divide_vcm:auto_generated                                                   ; lpm_divide_vcm      ; work         ;
+;             |sign_div_unsign_5nh:divider| ; 464 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div0|lpm_divide_vcm:auto_generated|sign_div_unsign_5nh:divider                       ; sign_div_unsign_5nh ; work         ;
+;                |alt_u_div_g2f:divider|    ; 464 (464)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div0|lpm_divide_vcm:auto_generated|sign_div_unsign_5nh:divider|alt_u_div_g2f:divider ; alt_u_div_g2f       ; work         ;
+;       |lpm_divide:Div1|                   ; 216 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_rbm:auto_generated|  ; 216 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div1|lpm_divide_rbm:auto_generated                                                   ; lpm_divide_rbm      ; work         ;
+;             |sign_div_unsign_1mh:divider| ; 216 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div1|lpm_divide_rbm:auto_generated|sign_div_unsign_1mh:divider                       ; sign_div_unsign_1mh ; work         ;
+;                |alt_u_div_80f:divider|    ; 216 (216)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|background_renderer:bg|lpm_divide:Div1|lpm_divide_rbm:auto_generated|sign_div_unsign_1mh:divider|alt_u_div_80f:divider ; alt_u_div_80f       ; work         ;
+;    |clock_divider:my_clock_divider1|      ; 40 (40)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|clock_divider:my_clock_divider1                                                                                        ; clock_divider       ; work         ;
+;    |clock_divider:my_clock_divider2|      ; 40 (40)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|clock_divider:my_clock_divider2                                                                                        ; clock_divider       ; work         ;
+;    |game:my_game|                         ; 524 (210)           ; 127 (63)                  ; 0                 ; 2          ; 0    ; 0            ; |Footsies|game:my_game                                                                                                           ; game                ; work         ;
+;       |character1:player1|                ; 150 (150)           ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|game:my_game|character1:player1                                                                                        ; character1          ; work         ;
+;       |character2:player2|                ; 164 (164)           ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|game:my_game|character2:player2                                                                                        ; character2          ; work         ;
+;    |game_state:game_state_inst|           ; 160 (160)           ; 74 (74)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|game_state:game_state_inst                                                                                             ; game_state          ; work         ;
+;    |hexto7seg:hex0|                       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|hexto7seg:hex0                                                                                                         ; hexto7seg           ; work         ;
+;    |hexto7seg:hex1|                       ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|hexto7seg:hex1                                                                                                         ; hexto7seg           ; work         ;
+;    |hexto7seg:hex2|                       ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|hexto7seg:hex2                                                                                                         ; hexto7seg           ; work         ;
+;    |hexto7seg:hex4|                       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|hexto7seg:hex4                                                                                                         ; hexto7seg           ; work         ;
+;    |hexto7seg:hex5|                       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Footsies|hexto7seg:hex5                                                                                                         ; hexto7seg           ; work         ;
+;    |keypad_controller:my_keypad|          ; 10 (10)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|keypad_controller:my_keypad                                                                                            ; keypad_controller   ; work         ;
+;    |vga_driver:draw|                      ; 84 (84)             ; 39 (39)                   ; 0                 ; 0          ; 0    ; 0            ; |Footsies|vga_driver:draw                                                                                                        ; vga_driver          ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Independent 9x9                 ; 2           ;
+; Two Independent 18x18           ; 1           ;
+; Total number of DSP blocks      ; 3           ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 3           ;
++---------------------------------+-------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Footsies|vga_driver:draw|v_state                                                                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; v_state.V_STATE_BACK ; v_state.V_STATE_PULSE ; v_state.V_STATE_FRONT ; v_state.V_STATE_ACTIVE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; v_state.V_STATE_ACTIVE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; v_state.V_STATE_FRONT  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; v_state.V_STATE_PULSE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; v_state.V_STATE_BACK   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Footsies|vga_driver:draw|h_state                                                                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; h_state.H_STATE_BACK ; h_state.H_STATE_PULSE ; h_state.H_STATE_FRONT ; h_state.H_STATE_ACTIVE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; h_state.H_STATE_ACTIVE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; h_state.H_STATE_FRONT  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; h_state.H_STATE_PULSE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; h_state.H_STATE_BACK   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                             ;
++-----------------------------------------------------+----------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal              ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------------------+------------------------+
+; game_state:game_state_inst|hex0_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex0_data[1]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex0_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex0_data[3]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex1_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex1_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex1_data[3]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex2_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex2_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex3_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex3_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex4_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex4_data[1]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex4_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex4_data[3]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex5_data[0]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex5_data[1]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex5_data[2]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; game_state:game_state_inst|hex5_data[3]             ; game_state:game_state_inst|Mux35 ; yes                    ;
+; Number of user-specified and inferred latches = 19  ;                                  ;                        ;
++-----------------------------------------------------+----------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++----------------------------------------+-------------------------------------------------+
+; Register name                          ; Reason for Removal                              ;
++----------------------------------------+-------------------------------------------------+
+; vga_driver:draw|green_reg[0]           ; Stuck at GND due to stuck port data_in          ;
+; vga_driver:draw|blue_reg[0..5]         ; Stuck at GND due to stuck port data_in          ;
+; vga_driver:draw|green_reg[1..4]        ; Stuck at GND due to stuck port data_in          ;
+; vga_driver:draw|red_reg[0..4]          ; Stuck at GND due to stuck port data_in          ;
+; bot_lfsr[3]                            ; Merged with bot_attack                          ;
+; bot_lfsr[2]                            ; Merged with bot_bwd                             ;
+; bot_lfsr[1]                            ; Merged with bot_fwd                             ;
+; game_state:game_state_inst|state[3]    ; Merged with game_state:game_state_inst|state[2] ;
+; game_state:game_state_inst|state[2]    ; Stuck at GND due to stuck port clock_enable     ;
+; vga_driver:draw|v_state~6              ; Lost fanout                                     ;
+; vga_driver:draw|v_state~7              ; Lost fanout                                     ;
+; vga_driver:draw|h_state~2              ; Lost fanout                                     ;
+; vga_driver:draw|h_state~3              ; Lost fanout                                     ;
+; Total Number of Removed Registers = 25 ;                                                 ;
++----------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 334   ;
+; Number of registers using Synchronous Clear  ; 118   ;
+; Number of registers using Synchronous Load   ; 32    ;
+; Number of registers using Asynchronous Clear ; 74    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 125   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------+
+; Inverted Register Statistics                                 ;
++----------------------------------------------------+---------+
+; Inverted Register                                  ; Fan out ;
++----------------------------------------------------+---------+
+; game:my_game|health1_reg[0]                        ; 8       ;
+; game:my_game|health1_reg[1]                        ; 7       ;
+; game:my_game|health2_reg[0]                        ; 8       ;
+; game:my_game|health2_reg[1]                        ; 7       ;
+; game_state:game_state_inst|countdown[0]            ; 11      ;
+; game_state:game_state_inst|countdown[1]            ; 9       ;
+; game:my_game|block1_reg[1]                         ; 5       ;
+; game:my_game|block1_reg[0]                         ; 5       ;
+; game:my_game|time_counter[1]                       ; 4       ;
+; game:my_game|time_counter[0]                       ; 4       ;
+; game:my_game|time_counter[6]                       ; 2       ;
+; game:my_game|time_counter[5]                       ; 2       ;
+; game:my_game|character1:player1|sprite_x_render[2] ; 11      ;
+; game:my_game|character2:player2|sprite_x_render[1] ; 11      ;
+; game:my_game|character1:player1|sprite_x_render[4] ; 11      ;
+; game:my_game|block2_reg[1]                         ; 5       ;
+; game:my_game|block2_reg[0]                         ; 5       ;
+; game:my_game|character2:player2|sprite_x_render[9] ; 13      ;
+; game:my_game|character2:player2|sprite_x_render[5] ; 12      ;
+; game:my_game|character2:player2|sprite_x_render[2] ; 12      ;
+; game:my_game|character1:player1|sprite_x_reg[2]    ; 4       ;
+; game:my_game|character2:player2|sprite_x_reg[1]    ; 4       ;
+; game:my_game|character1:player1|sprite_x_reg[4]    ; 4       ;
+; game:my_game|character2:player2|sprite_x_reg[9]    ; 13      ;
+; game:my_game|character2:player2|sprite_x_reg[5]    ; 4       ;
+; game:my_game|character2:player2|sprite_x_reg[2]    ; 4       ;
+; bot_lfsr[0]                                        ; 1       ;
+; bot_lfsr[10]                                       ; 2       ;
+; bot_lfsr[13]                                       ; 2       ;
+; bot_lfsr[15]                                       ; 1       ;
+; bot_lfsr[11]                                       ; 1       ;
+; bot_lfsr[7]                                        ; 1       ;
+; bot_lfsr[6]                                        ; 1       ;
+; bot_lfsr[5]                                        ; 1       ;
+; Total number of inverted registers = 34            ;         ;
++----------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Footsies|game:my_game|stun_counter1[1]                 ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Footsies|game:my_game|stun_counter2[2]                 ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 2 LEs                ; 10 LEs                 ; Yes        ; |Footsies|game_state:game_state_inst|countdown[3]       ;
+; 10:1               ; 32 bits   ; 192 LEs       ; 64 LEs               ; 128 LEs                ; Yes        ; |Footsies|game_state:game_state_inst|blink_timer[22]    ;
+; 11:1               ; 32 bits   ; 224 LEs       ; 64 LEs               ; 160 LEs                ; Yes        ; |Footsies|game_state:game_state_inst|countdown_timer[5] ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Footsies|game_state:game_state_inst|state[1]           ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 0 LEs                ; 50 LEs                 ; Yes        ; |Footsies|vga_driver:draw|h_counter[4]                  ;
+; 12:1               ; 10 bits   ; 80 LEs        ; 0 LEs                ; 80 LEs                 ; Yes        ; |Footsies|vga_driver:draw|v_counter[9]                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 2 LEs                ; 10 LEs                 ; Yes        ; |Footsies|game_state:game_state_inst|countdown[1]       ;
+; 1:1                ; 8 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |Footsies|game_state:game_state_inst|Mux12              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |Footsies|game_state:game_state_inst|Selector74         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |Footsies|game_state:game_state_inst|Mux21              ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Footsies|vga_driver:draw|green_reg                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:my_clock_divider1 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; DIV_FACTOR     ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:my_clock_divider2 ;
++----------------+--------+----------------------------------------------------+
+; Parameter Name ; Value  ; Type                                               ;
++----------------+--------+----------------------------------------------------+
+; DIV_FACTOR     ; 833333 ; Signed Integer                                     ;
++----------------+--------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:my_game|character1:player1 ;
++----------------+------------+------------------------------------------------+
+; Parameter Name ; Value      ; Type                                           ;
++----------------+------------+------------------------------------------------+
+; INIT_X         ; 0000010100 ; Unsigned Binary                                ;
++----------------+------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:my_game|character2:player2 ;
++----------------+------------+------------------------------------------------+
+; Parameter Name ; Value      ; Type                                           ;
++----------------+------------+------------------------------------------------+
+; INIT_X         ; 1000100110 ; Unsigned Binary                                ;
++----------------+------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: vga_driver:draw ;
++----------------+------------+--------------------------------+
+; Parameter Name ; Value      ; Type                           ;
++----------------+------------+--------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary                ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary                ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary                ;
+; H_BACK         ; 0000101111 ; Unsigned Binary                ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary                ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary                ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary                ;
+; V_BACK         ; 0000100000 ; Unsigned Binary                ;
+; LOW            ; 0          ; Unsigned Binary                ;
+; HIGH           ; 1          ; Unsigned Binary                ;
+; H_STATE_ACTIVE ; 00         ; Unsigned Binary                ;
+; H_STATE_FRONT  ; 01         ; Unsigned Binary                ;
+; H_STATE_PULSE  ; 10         ; Unsigned Binary                ;
+; H_STATE_BACK   ; 11         ; Unsigned Binary                ;
+; V_STATE_ACTIVE ; 00         ; Unsigned Binary                ;
+; V_STATE_FRONT  ; 01         ; Unsigned Binary                ;
+; V_STATE_PULSE  ; 10         ; Unsigned Binary                ;
+; V_STATE_BACK   ; 11         ; Unsigned Binary                ;
++----------------+------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: background_renderer:bg|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                       ;
+; LPM_WIDTHD             ; 10             ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_vcm ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: background_renderer:bg|lpm_divide:Div1 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 18             ; Untyped                                       ;
+; LPM_WIDTHD             ; 9              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_rbm ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_state:game_state_inst"                                                               ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; game_start ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; winner     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "vga_driver:draw" ;
++-------+-------+----------+------------------+
+; Port  ; Type  ; Severity ; Details          ;
++-------+-------+----------+------------------+
+; reset ; Input ; Info     ; Stuck at GND     ;
++-------+-------+----------+------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game:my_game"                                                                                                      ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                                                  ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; rst            ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; sprite_y[3..2] ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; sprite_y[7..6] ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; sprite_y[1..0] ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; sprite_y[9]    ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; sprite_y[8]    ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; sprite_y[5]    ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; sprite_y[4]    ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; state1         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; state2         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; attacking1     ; Output ; Info     ; Explicitly unconnected                                                                                   ;
+; attacking2     ; Output ; Info     ; Explicitly unconnected                                                                                   ;
+; game_over      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; hit1           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; hit2           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "keypad_controller:my_keypad"                                                                                                                 ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                      ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; up   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; rst  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "clock_divider:my_clock_divider2" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; rst  ; Input ; Info     ; Stuck at GND                      ;
++------+-------+----------+-----------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "clock_divider:my_clock_divider1" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; rst  ; Input ; Info     ; Stuck at GND                      ;
++------+-------+----------+-----------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 334                         ;
+;     CLR               ; 39                          ;
+;     ENA               ; 48                          ;
+;     ENA CLR           ; 1                           ;
+;     ENA CLR SCLR      ; 2                           ;
+;     ENA CLR SLD       ; 32                          ;
+;     ENA SCLR          ; 42                          ;
+;     SCLR              ; 74                          ;
+;     plain             ; 96                          ;
+; arriav_io_obuf        ; 88                          ;
+; arriav_lcell_comb     ; 1666                        ;
+;     arith             ; 686                         ;
+;         0 data inputs ; 56                          ;
+;         1 data inputs ; 334                         ;
+;         2 data inputs ; 26                          ;
+;         3 data inputs ; 146                         ;
+;         4 data inputs ; 111                         ;
+;         5 data inputs ; 13                          ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 942                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 32                          ;
+;         2 data inputs ; 277                         ;
+;         3 data inputs ; 155                         ;
+;         4 data inputs ; 140                         ;
+;         5 data inputs ; 135                         ;
+;         6 data inputs ; 201                         ;
+;     shared            ; 33                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 26                          ;
+;         2 data inputs ; 5                           ;
+; arriav_mac            ; 3                           ;
+; boundary_port         ; 210                         ;
+;                       ;                             ;
+; Max LUT depth         ; 45.90                       ;
+; Average LUT depth     ; 17.07                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Wed Jun  4 04:59:15 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Footsies -c Footsies
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file modules/keypad_input.v
+    Info (12023): Found entity 1: keypad_input File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/keypad_input.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/game_state.v
+    Info (12023): Found entity 1: game_state File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/game_clock.v
+    Info (12023): Found entity 1: game_clock File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_clock.v Line: 1
+Warning (10463): Verilog HDL Declaration warning at character2.v(213): "inside" is SystemVerilog-2005 keyword File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 213
+Info (12021): Found 1 design units, including 1 entities, in source file modules/character2.v
+    Info (12023): Found entity 1: character2 File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 1
+Warning (10463): Verilog HDL Declaration warning at character1.v(212): "inside" is SystemVerilog-2005 keyword File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 212
+Info (12021): Found 1 design units, including 1 entities, in source file modules/character1.v
+    Info (12023): Found entity 1: character1 File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/keypad_controller.v
+    Info (12023): Found entity 1: keypad_controller File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/keypad_controller.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/hexto7seg.v
+    Info (12023): Found entity 1: hexto7seg File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/hexto7seg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file footsies.v
+    Info (12023): Found entity 1: Footsies File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file modules/vga_driver.v
+    Info (12023): Found entity 1: vga_driver File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/vga_driver.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/game.v
+    Info (12023): Found entity 1: game File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/clock_divider.v
+    Info (12023): Found entity 1: clock_divider File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/clock_divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modules/background_renderer.v
+    Info (12023): Found entity 1: background_renderer File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at game.v(141): created implicit net for "in_time_display" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 141
+Warning (10236): Verilog HDL Implicit Net warning at game.v(142): created implicit net for "in_health1_bar" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 142
+Warning (10236): Verilog HDL Implicit Net warning at game.v(143): created implicit net for "in_health2_bar" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 143
+Info (12127): Elaborating entity "Footsies" for the top level hierarchy
+Info (12128): Elaborating entity "background_renderer" for hierarchy "background_renderer:bg" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 150
+Warning (10850): Verilog HDL warning at background_renderer.v(18): number of words (9) in memory file does not match the number of elements in the address range [0:43199] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 18
+Warning (10230): Verilog HDL assignment warning at background.mem(9): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 9
+Warning (10230): Verilog HDL assignment warning at background.mem(10): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 10
+Warning (10230): Verilog HDL assignment warning at background.mem(11): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 11
+Warning (10230): Verilog HDL assignment warning at background.mem(15): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 15
+Warning (10230): Verilog HDL assignment warning at background.mem(16): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 16
+Warning (10230): Verilog HDL assignment warning at background.mem(17): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 17
+Warning (10230): Verilog HDL assignment warning at background.mem(21): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 21
+Warning (10230): Verilog HDL assignment warning at background.mem(22): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 22
+Warning (10230): Verilog HDL assignment warning at background.mem(23): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/background.mem Line: 23
+Warning (10230): Verilog HDL assignment warning at background_renderer.v(25): truncated value with size 32 to match size of target (9) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 25
+Warning (10230): Verilog HDL assignment warning at background_renderer.v(26): truncated value with size 32 to match size of target (9) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 26
+Warning (10030): Net "bg_mem.data_a" at background_renderer.v(15) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 15
+Warning (10030): Net "bg_mem.waddr_a" at background_renderer.v(15) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 15
+Warning (10030): Net "bg_mem.we_a" at background_renderer.v(15) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 15
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:my_clock_divider1" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 157
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:my_clock_divider2" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 164
+Info (12128): Elaborating entity "keypad_controller" for hierarchy "keypad_controller:my_keypad" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 176
+Warning (10230): Verilog HDL assignment warning at keypad_controller.v(44): truncated value with size 32 to match size of target (2) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/keypad_controller.v Line: 44
+Info (12128): Elaborating entity "game" for hierarchy "game:my_game" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 206
+Warning (10230): Verilog HDL assignment warning at game.v(69): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 69
+Warning (10230): Verilog HDL assignment warning at game.v(70): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 70
+Warning (10230): Verilog HDL assignment warning at game.v(71): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 71
+Warning (10230): Verilog HDL assignment warning at game.v(72): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 72
+Warning (10230): Verilog HDL assignment warning at game.v(74): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 74
+Warning (10230): Verilog HDL assignment warning at game.v(75): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 75
+Warning (10230): Verilog HDL assignment warning at game.v(76): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 76
+Warning (10230): Verilog HDL assignment warning at game.v(77): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 77
+Warning (10230): Verilog HDL assignment warning at game.v(97): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 97
+Warning (10230): Verilog HDL assignment warning at game.v(113): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 113
+Warning (10230): Verilog HDL assignment warning at game.v(117): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 117
+Warning (10230): Verilog HDL assignment warning at game.v(122): truncated value with size 32 to match size of target (2) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 122
+Warning (10230): Verilog HDL assignment warning at game.v(123): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 123
+Warning (10230): Verilog HDL assignment warning at game.v(125): truncated value with size 32 to match size of target (2) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 125
+Warning (10230): Verilog HDL assignment warning at game.v(126): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 126
+Warning (10230): Verilog HDL assignment warning at game.v(131): truncated value with size 32 to match size of target (2) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 131
+Warning (10230): Verilog HDL assignment warning at game.v(132): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 132
+Warning (10230): Verilog HDL assignment warning at game.v(134): truncated value with size 32 to match size of target (2) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 134
+Warning (10230): Verilog HDL assignment warning at game.v(135): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 135
+Warning (10230): Verilog HDL assignment warning at game.v(145): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 145
+Warning (10230): Verilog HDL assignment warning at game.v(146): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 146
+Info (12128): Elaborating entity "character1" for hierarchy "game:my_game|character1:player1" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 60
+Warning (10230): Verilog HDL assignment warning at character1.v(79): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 79
+Warning (10230): Verilog HDL assignment warning at character1.v(82): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 82
+Warning (10230): Verilog HDL assignment warning at character1.v(95): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 95
+Warning (10230): Verilog HDL assignment warning at character1.v(104): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 104
+Warning (10230): Verilog HDL assignment warning at character1.v(112): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 112
+Warning (10230): Verilog HDL assignment warning at character1.v(116): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 116
+Warning (10230): Verilog HDL assignment warning at character1.v(122): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 122
+Warning (10230): Verilog HDL assignment warning at character1.v(126): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 126
+Warning (10230): Verilog HDL assignment warning at character1.v(132): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 132
+Warning (10230): Verilog HDL assignment warning at character1.v(141): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 141
+Warning (10230): Verilog HDL assignment warning at character1.v(145): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 145
+Warning (10230): Verilog HDL assignment warning at character1.v(151): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 151
+Warning (10230): Verilog HDL assignment warning at character1.v(155): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 155
+Warning (10230): Verilog HDL assignment warning at character1.v(161): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 161
+Warning (10230): Verilog HDL assignment warning at character1.v(170): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 170
+Warning (10230): Verilog HDL assignment warning at character1.v(178): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 178
+Warning (10230): Verilog HDL assignment warning at character1.v(192): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 192
+Warning (10230): Verilog HDL assignment warning at character1.v(194): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 194
+Warning (10230): Verilog HDL assignment warning at character1.v(209): truncated value with size 10 to match size of target (6) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 209
+Warning (10230): Verilog HDL assignment warning at character1.v(210): truncated value with size 10 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 210
+Warning (10230): Verilog HDL assignment warning at character1.v(213): truncated value with size 32 to match size of target (14) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 213
+Warning (10230): Verilog HDL assignment warning at character1.v(216): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 216
+Warning (10230): Verilog HDL assignment warning at character1.v(217): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 217
+Warning (10230): Verilog HDL assignment warning at character1.v(218): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 218
+Warning (10230): Verilog HDL assignment warning at character1.v(219): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 219
+Warning (10230): Verilog HDL assignment warning at character1.v(225): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 225
+Warning (10230): Verilog HDL assignment warning at character1.v(226): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 226
+Warning (10230): Verilog HDL assignment warning at character1.v(227): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 227
+Warning (10230): Verilog HDL assignment warning at character1.v(228): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 228
+Warning (10850): Verilog HDL warning at character1.v(240): number of words (9) in memory file does not match the number of elements in the address range [0:15359] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 240
+Warning (10230): Verilog HDL assignment warning at character1.mem(11): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 11
+Warning (10230): Verilog HDL assignment warning at character1.mem(12): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 12
+Warning (10230): Verilog HDL assignment warning at character1.mem(13): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 13
+Warning (10230): Verilog HDL assignment warning at character1.mem(17): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 17
+Warning (10230): Verilog HDL assignment warning at character1.mem(18): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 18
+Warning (10230): Verilog HDL assignment warning at character1.mem(19): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 19
+Warning (10230): Verilog HDL assignment warning at character1.mem(23): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 23
+Warning (10230): Verilog HDL assignment warning at character1.mem(24): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 24
+Warning (10230): Verilog HDL assignment warning at character1.mem(25): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character1.mem Line: 25
+Warning (10030): Net "sprite_mem.data_a" at character1.v(238) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 238
+Warning (10030): Net "sprite_mem.waddr_a" at character1.v(238) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 238
+Warning (10030): Net "sprite_mem.we_a" at character1.v(238) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 238
+Info (12128): Elaborating entity "character2" for hierarchy "game:my_game|character2:player2" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 67
+Warning (10230): Verilog HDL assignment warning at character2.v(79): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 79
+Warning (10230): Verilog HDL assignment warning at character2.v(82): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 82
+Warning (10230): Verilog HDL assignment warning at character2.v(95): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 95
+Warning (10230): Verilog HDL assignment warning at character2.v(104): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 104
+Warning (10230): Verilog HDL assignment warning at character2.v(112): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 112
+Warning (10230): Verilog HDL assignment warning at character2.v(116): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 116
+Warning (10230): Verilog HDL assignment warning at character2.v(122): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 122
+Warning (10230): Verilog HDL assignment warning at character2.v(126): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 126
+Warning (10230): Verilog HDL assignment warning at character2.v(132): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 132
+Warning (10230): Verilog HDL assignment warning at character2.v(141): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 141
+Warning (10230): Verilog HDL assignment warning at character2.v(145): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 145
+Warning (10230): Verilog HDL assignment warning at character2.v(151): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 151
+Warning (10230): Verilog HDL assignment warning at character2.v(155): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 155
+Warning (10230): Verilog HDL assignment warning at character2.v(161): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 161
+Warning (10230): Verilog HDL assignment warning at character2.v(170): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 170
+Warning (10230): Verilog HDL assignment warning at character2.v(178): truncated value with size 32 to match size of target (5) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 178
+Warning (10230): Verilog HDL assignment warning at character2.v(192): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 192
+Warning (10230): Verilog HDL assignment warning at character2.v(194): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 194
+Warning (10230): Verilog HDL assignment warning at character2.v(211): truncated value with size 10 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 211
+Warning (10230): Verilog HDL assignment warning at character2.v(217): truncated value with size 32 to match size of target (14) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 217
+Warning (10230): Verilog HDL assignment warning at character2.v(220): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 220
+Warning (10230): Verilog HDL assignment warning at character2.v(221): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 221
+Warning (10230): Verilog HDL assignment warning at character2.v(222): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 222
+Warning (10230): Verilog HDL assignment warning at character2.v(223): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 223
+Warning (10230): Verilog HDL assignment warning at character2.v(229): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 229
+Warning (10230): Verilog HDL assignment warning at character2.v(230): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 230
+Warning (10230): Verilog HDL assignment warning at character2.v(231): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 231
+Warning (10230): Verilog HDL assignment warning at character2.v(232): truncated value with size 32 to match size of target (10) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 232
+Warning (10850): Verilog HDL warning at character2.v(244): number of words (9) in memory file does not match the number of elements in the address range [0:15359] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 244
+Warning (10230): Verilog HDL assignment warning at character2.mem(11): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 11
+Warning (10230): Verilog HDL assignment warning at character2.mem(12): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 12
+Warning (10230): Verilog HDL assignment warning at character2.mem(13): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 13
+Warning (10230): Verilog HDL assignment warning at character2.mem(17): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 17
+Warning (10230): Verilog HDL assignment warning at character2.mem(18): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 18
+Warning (10230): Verilog HDL assignment warning at character2.mem(19): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 19
+Warning (10230): Verilog HDL assignment warning at character2.mem(23): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 23
+Warning (10230): Verilog HDL assignment warning at character2.mem(24): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 24
+Warning (10230): Verilog HDL assignment warning at character2.mem(25): truncated value with size 32 to match size of target (8) File: C:/Users/lezgi/Desktop/EE314/EE314final/character2.mem Line: 25
+Warning (10030): Net "sprite_mem.data_a" at character2.v(242) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 242
+Warning (10030): Net "sprite_mem.waddr_a" at character2.v(242) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 242
+Warning (10030): Net "sprite_mem.we_a" at character2.v(242) has no driver or initial value, using a default initial value '0' File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 242
+Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:draw" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 267
+Info (12128): Elaborating entity "game_state" for hierarchy "game_state:game_state_inst" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 294
+Warning (10230): Verilog HDL assignment warning at game_state.v(80): truncated value with size 32 to match size of target (4) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 80
+Warning (10270): Verilog HDL Case Statement warning at game_state.v(144): incomplete case statement has no default case item File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 144
+Warning (10270): Verilog HDL Case Statement warning at game_state.v(131): incomplete case statement has no default case item File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex0_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex1_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex2_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex3_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex4_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (10240): Verilog HDL Always Construct warning at game_state.v(131): inferring latch(es) for variable "hex5_data", which holds its previous value in one or more paths through the always construct File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex5_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex5_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex5_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex5_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex4_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex4_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex4_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex4_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex3_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex3_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex3_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex3_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex2_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex2_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex2_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex2_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex1_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex1_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex1_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex1_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex0_data[0]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex0_data[1]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex0_data[2]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (10041): Inferred latch for "hex0_data[3]" at game_state.v(131) File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Info (12128): Elaborating entity "hexto7seg" for hierarchy "hexto7seg:hex0" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 297
+Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer game:my_game|game_tick File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game.v Line: 46
+Info (276014): Found 3 instances of uninferred RAM logic
+    Info (276007): RAM logic "game:my_game|character2:player2|sprite_mem" is uninferred due to asynchronous read logic File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character2.v Line: 242
+    Info (276007): RAM logic "game:my_game|character1:player1|sprite_mem" is uninferred due to asynchronous read logic File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/character1.v Line: 238
+    Info (276007): RAM logic "background_renderer:bg|bg_mem" is uninferred due to asynchronous read logic File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 15
+Critical Warning (127005): Memory depth (16384) in the design file differs from memory depth (15360) in the Memory Initialization File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_character2_d391c165.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_character2_d391c165.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Critical Warning (127005): Memory depth (16384) in the design file differs from memory depth (15360) in the Memory Initialization File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_character1_e352782c.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_character1_e352782c.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Critical Warning (127005): Memory depth (65536) in the design file differs from memory depth (43200) in the Memory Initialization File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_background_renderer_7d888ff0.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/lezgi/Desktop/EE314/EE314final/db/Footsies.ram0_background_renderer_7d888ff0.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "background_renderer:bg|Div0" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "background_renderer:bg|Div1" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 26
+Info (12130): Elaborated megafunction instantiation "background_renderer:bg|lpm_divide:Div0" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 25
+Info (12133): Instantiated megafunction "background_renderer:bg|lpm_divide:Div0" with the following parameter: File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 25
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "10"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_vcm.tdf
+    Info (12023): Found entity 1: lpm_divide_vcm File: C:/Users/lezgi/Desktop/EE314/EE314final/db/lpm_divide_vcm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_5nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_5nh File: C:/Users/lezgi/Desktop/EE314/EE314final/db/sign_div_unsign_5nh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_g2f.tdf
+    Info (12023): Found entity 1: alt_u_div_g2f File: C:/Users/lezgi/Desktop/EE314/EE314final/db/alt_u_div_g2f.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "background_renderer:bg|lpm_divide:Div1" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 26
+Info (12133): Instantiated megafunction "background_renderer:bg|lpm_divide:Div1" with the following parameter: File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/background_renderer.v Line: 26
+    Info (12134): Parameter "LPM_WIDTHN" = "18"
+    Info (12134): Parameter "LPM_WIDTHD" = "9"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_rbm.tdf
+    Info (12023): Found entity 1: lpm_divide_rbm File: C:/Users/lezgi/Desktop/EE314/EE314final/db/lpm_divide_rbm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_1mh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_1mh File: C:/Users/lezgi/Desktop/EE314/EE314final/db/sign_div_unsign_1mh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_80f.tdf
+    Info (12023): Found entity 1: alt_u_div_80f File: C:/Users/lezgi/Desktop/EE314/EE314final/db/alt_u_div_80f.tdf Line: 23
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO0GPIO[0]" and its non-tri-state driver. File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO0GPIO[1]" and its non-tri-state driver. File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO0GPIO[2]" and its non-tri-state driver. File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO0GPIO[3]" and its non-tri-state driver. File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+Warning (13027): Removed fan-outs from the following always-disabled I/O buffers
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "GPIO0GPIO[0]" to the node "GPIO0GPIO[0]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "GPIO0GPIO[1]" to the node "GPIO0GPIO[1]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "GPIO0GPIO[2]" to the node "GPIO0GPIO[2]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "GPIO0GPIO[3]" to the node "GPIO0GPIO[3]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex1_data[2]" merged with LATCH primitive "game_state:game_state_inst|hex1_data[0]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex3_data[0]" merged with LATCH primitive "game_state:game_state_inst|hex2_data[0]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex5_data[0]" merged with LATCH primitive "game_state:game_state_inst|hex2_data[2]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex4_data[2]" merged with LATCH primitive "game_state:game_state_inst|hex2_data[2]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex3_data[2]" merged with LATCH primitive "game_state:game_state_inst|hex2_data[2]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex5_data[2]" merged with LATCH primitive "game_state:game_state_inst|hex4_data[0]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex4_data[3]" merged with LATCH primitive "game_state:game_state_inst|hex4_data[1]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Info (13026): Duplicate LATCH primitive "game_state:game_state_inst|hex5_data[1]" merged with LATCH primitive "game_state:game_state_inst|hex4_data[1]" File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+Warning (13012): Latch game_state:game_state_inst|hex0_data[0] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex0_data[1] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex0_data[2] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex0_data[3] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex1_data[0] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex1_data[3] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex2_data[0] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex2_data[2] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[0] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex4_data[0] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[0] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex4_data[1] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13012): Latch game_state:game_state_inst|hex5_data[3] has unsafe behavior File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 131
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_state:game_state_inst|state[1] File: C:/Users/lezgi/Desktop/EE314/EE314final/modules/game_state.v Line: 60
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO0GPIO[0]~synth" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13010): Node "GPIO0GPIO[1]~synth" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13010): Node "GPIO0GPIO[2]~synth" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+    Warning (13010): Node "GPIO0GPIO[3]~synth" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 54
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 14
+    Warning (13410): Pin "DRAM_BA[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 15
+    Warning (13410): Pin "DRAM_BA[1]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 15
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at VCC File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 16
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 17
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 18
+    Warning (13410): Pin "DRAM_CS_N" is stuck at VCC File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 19
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 21
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at VCC File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 22
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 23
+    Warning (13410): Pin "DRAM_WE_N" is stuck at VCC File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 24
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 28
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 29
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 29
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 29
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 30
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 30
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 30
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 45
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 47
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 47
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 47
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 47
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 47
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 49
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 49
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 49
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 49
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 49
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 50
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 11 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 8
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 9
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 10
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.v Line: 41
+Info (21057): Implemented 1909 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 104 output pins
+    Info (21060): Implemented 88 bidirectional pins
+    Info (21061): Implemented 1696 logic cells
+    Info (21062): Implemented 3 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 241 warnings
+    Info: Peak virtual memory: 4967 megabytes
+    Info: Processing ended: Wed Jun  4 04:59:24 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:19
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/lezgi/Desktop/EE314/EE314final/Footsies.map.smsg.
+
+

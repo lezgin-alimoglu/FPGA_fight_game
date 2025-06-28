@@ -1,0 +1,26 @@
+// Character1 memory file - 64x240 pixels (15360 total pixels)
+// Format: RRRGGGBB
+// Colors:
+// 00000000 - Transparent
+// 11100000 - Red (hitbox)
+// 11111100 - Yellow (hurtbox)
+// 00011100 - Green (character body)
+// 11111111 - White (character details)
+
+// Character body (green)
+00011100
+00011100
+00011100
+// ... (repeat for character body)
+
+// Hitbox (red) - during attack
+11100000
+11100000
+11100000
+// ... (repeat for hitbox)
+
+// Hurtbox (yellow) - during recovery
+11111100
+11111100
+11111100
+// ... (repeat for hurtbox) 

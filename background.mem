@@ -1,0 +1,24 @@
+// Background memory file - 240x180 pixels (43200 total pixels)
+// Format: RRRGGGBB
+// Colors:
+// 00000011 - Blue (sky)
+// 00011100 - Green (ground)
+// 11111111 - White (clouds)
+
+// Sky (blue)
+00000011
+00000011
+00000011
+// ... (repeat for sky)
+
+// Ground (green)
+00011100
+00011100
+00011100
+// ... (repeat for ground)
+
+// Clouds (white)
+11111111
+11111111
+11111111
+// ... (repeat for clouds) 

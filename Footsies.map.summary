@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed Jun  4 04:59:24 2025
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : Footsies
+Top-level Entity Name : Footsies
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 334
+Total pins : 210
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 3
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
